@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Controle Financeiro - Login</title>
+  <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Controle Financeiro</h1>
+    
+    <div class="form-container">
+      <div class="tabs">
+        <button class="tab active" data-tab="login">Login</button>
+        <button class="tab" data-tab="register">Registrar</button>
+      </div>
+      
+      <form id="loginForm" class="active">
+        <h2>Entrar</h2>
+        <div class="form-group">
+          <label for="loginEmail">Email:</label>
+          <input type="email" id="loginEmail" required>
+        </div>
+        <div class="form-group">
+          <label for="loginPassword">Senha:</label>
+          <input type="password" id="loginPassword" required>
+        </div>
+        <button type="submit">Entrar</button>
+      </form>
+      
+      <form id="registerForm">
+        <h2>Registrar</h2>
+        <div class="form-group">
+          <label for="registerName">Nome:</label>
+          <input type="text" id="registerName" required>
+        </div>
+        <div class="form-group">
+          <label for="registerEmail">Email:</label>
+          <input type="email" id="registerEmail" required>
+        </div>
+        <div class="form-group">
+          <label for="registerPassword">Senha:</label>
+          <input type="password" id="registerPassword" required>
+        </div>
+        <button type="submit">Registrar</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="scripts/main.js"></script>
+</body>
+</html>

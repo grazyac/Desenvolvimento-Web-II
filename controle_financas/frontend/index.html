@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - Controle Financeiro</title>
+  <link rel="stylesheet" href="styles/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="dashboard-container">
+    <header>
+      <h1>Controle Financeiro</h1>
+      <button id="logoutBtn">Sair</button>
+    </header>
+    
+    <div class="dashboard-content">
+      <aside class="sidebar">
+        <div class="resumo">
+          <h3>Resumo</h3>
+          <div class="resumo-item">
+            <span>Entradas:</span>
+            <span id="totalEntradas">R$ 0,00</span>
+          </div>
+          <div class="resumo-item">
+            <span>Saídas:</span>
+            <span id="totalSaidas">R$ 0,00</span>
+          </div>
+          <div class="resumo-item saldo">
+            <span>Saldo:</span>
+            <span id="saldo">R$ 0,00</span>
+          </div>
+        </div>
+        
+        <div class="filtros">
+          <h3>Filtros</h3>
+          <div class="form-group">
+            <label for="filtroTipo">Tipo:</label>
+            <select id="filtroTipo">
+              <option value="todos">Todos</option>
+              <option value="entrada">Entrada</option>
+              <option value="saida">Saída</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="filtroCategoria">Categoria:</label>
+            <select id="filtroCategoria">
+              <option value="todos">Todas</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="filtroDataInicio">De:</label>
+            <input type="date" id="filtroDataInicio">
+          </div>
+          <div class="form-group">
+            <label for="filtroDataFim">Até:</label>
+            <input type="date" id="filtroDataFim">
+          </div>
+          <button id="aplicarFiltros">Aplicar Filtros</button>
+        </div>
+      </aside>
+      
+      <main class="main-content">
+        <div class="nova-transacao">
+          <h2>Nova Transação</h2>
+          <form id="transacaoForm">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="transacaoTipo">Tipo:</label>
+                <select id="transacaoTipo" required>
+                  <option value="entrada">Entrada</option>
+                  <option value="saida">Saída</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="transacaoValor">Valor:</label>
+                <input type="number" id="transacaoValor" min="0.01" step="0.01" required>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="transacaoCategoria">Categoria:</label>
+                <input type="text" id="transacaoCategoria" list="categorias" required>
+                <datalist id="categorias">
+                  <option value="Salário">
+                  <option value="Alimentação">
+                  <option value="Transporte">
+                  <option value="Lazer">
+                  <option value="Moradia">
+                  <option value="Saúde">
+                  <option value="Educação">
+                </datalist>
+              </div>
+              <div class="form-group">
+                <label for="transacaoData">Data:</label>
+                <input type="date" id="transacaoData" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="transacaoDescricao">Descrição (opcional):</label>
+              <textarea id="transacaoDescricao" rows="2"></textarea>
+            </div>
+            <button type="submit">Adicionar Transação</button>
+          </form>
+        </div>
+        
+        <div class="graficos">
+          <div class="grafico-container">
+            <canvas id="graficoCategorias"></canvas>
+          </div>
+          <div class="grafico-container">
+            <canvas id="graficoPeriodo"></canvas>
+          </div>
+        </div>
+        
+        <div class="lista-transacoes">
+          <h2>Transações</h2>
+          <table id="transacoesTable">
+            <thead>
+              <tr>
+                <th>Tipo</th>
+                <th>Valor</th>
+                <th>Categoria</th>
+                <th>Descrição</th>
+                <th>Data</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody id="transacoesBody">
+              <!-- As transações serão inseridas aqui via JavaScript -->
+            </tbody>
+          </table>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script src="scripts/main.js"></script>
+</body>
+</html>
